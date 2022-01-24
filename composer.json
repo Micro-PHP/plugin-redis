@@ -1,0 +1,20 @@
+{
+    "name": "micro/plugin-redis",
+    "description": "Micro Framework: Redis component",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.1",
+    "autoload": {
+        "psr-4": {
+            "Micro\\Plugin\\Redis\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Stanislau.Komar",
+            "email": "stanislau_komar@epam.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
