@@ -14,7 +14,7 @@ class RedisPluginConfiguration extends PluginConfiguration implements RedisPlugi
     public const CLIENT_DEFAULT = 'default';
 
     /**
-     * @return string[]
+     * {@inheritDoc}
      */
     public function getClientList(): array
     {
@@ -31,8 +31,10 @@ class RedisPluginConfiguration extends PluginConfiguration implements RedisPlugi
     {
         if(!in_array($clientName, $this->getClientList(), true)) {
             throw new \InvalidArgumentException(
-                'Redis client is not defined in the environment file. Please, append connection id to "%s"',
-                self::CFG_CLIENT_LIST
+                sprintf(
+                    'Redis client is not defined in the environment file. Please, append connection id to "%s"',
+                    self::CFG_CLIENT_LIST
+                )
             );
         }
 
