@@ -4,17 +4,17 @@ namespace Micro\Plugin\Redis\Business\Redis;
 
 use Micro\Plugin\Redis\Configuration\ClientOptionsConfigurationInterface;
 use Micro\Plugin\Redis\Configuration\RedisClientConfigurationInterface;
-use Micro\Plugin\Redis\RedisPluginConfiguration;
+use Micro\Plugin\Redis\RedisPluginConfigurationInterface;
 use \Redis;
 
 class RedisBuilder implements RedisBuilderInterface
 {
     /**
-     * @param RedisPluginConfiguration $pluginConfiguration
+     * @param RedisPluginConfigurationInterface $pluginConfiguration
      * @param RedisFactoryInterface $redisFactory
      */
     public function __construct(
-    private RedisPluginConfiguration $pluginConfiguration,
+    private RedisPluginConfigurationInterface $pluginConfiguration,
     private RedisFactoryInterface $redisFactory
     )
     {

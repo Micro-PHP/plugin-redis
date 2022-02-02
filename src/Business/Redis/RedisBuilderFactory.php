@@ -2,16 +2,16 @@
 
 namespace Micro\Plugin\Redis\Business\Redis;
 
-use Micro\Plugin\Redis\RedisPluginConfiguration;
+use Micro\Plugin\Redis\RedisPluginConfigurationInterface;
 
 class RedisBuilderFactory implements RedisBuilderFactoryInterface
 {
     /**
-     * @param RedisPluginConfiguration $configuration
+     * @param RedisPluginConfigurationInterface $configuration
      * @param RedisFactoryInterface $redisFactory
      */
     public function __construct(
-    private RedisPluginConfiguration $configuration,
+    private RedisPluginConfigurationInterface $configuration,
     private RedisFactoryInterface $redisFactory
     )
     {
