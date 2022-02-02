@@ -8,10 +8,10 @@ class SslConfiguration extends PluginRoutingKeyConfiguration implements SslConfi
 {
 
     protected const CFG_SSL_ENABLED = 'REDIS_%s_SSL_ENABLED';
-    protected const CFG_SSL_VERIFY = 'REDIS_%s_SSL_VERIFY';
+    protected const CFG_SSL_VERIFY  = 'REDIS_%s_SSL_VERIFY';
 
     public const SSL_ENABLED_DEFAULT = false;
-    public const SSL_VERIFY_DEFAULT = false;
+    public const SSL_VERIFY_DEFAULT  = false;
 
     /**
      * @return bool

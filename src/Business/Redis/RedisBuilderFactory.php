@@ -11,9 +11,11 @@ class RedisBuilderFactory implements RedisBuilderFactoryInterface
      * @param RedisFactoryInterface $redisFactory
      */
     public function __construct(
-        private RedisPluginConfiguration $configuration,
-        private RedisFactoryInterface $redisFactory
-    ) {}
+    private RedisPluginConfiguration $configuration,
+    private RedisFactoryInterface $redisFactory
+    )
+    {
+    }
 
     /**
      * {@inheritDoc}

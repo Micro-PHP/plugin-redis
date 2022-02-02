@@ -2,27 +2,25 @@
 
 namespace Micro\Plugin\Redis\Configuration;
 
-
 use Micro\Framework\Kernel\Configuration\PluginRoutingKeyConfiguration;
-
 
 class RedisClientConfiguration extends PluginRoutingKeyConfiguration implements RedisClientConfigurationInterface
 {
-    public const CONNECTION_TYPE_DEFAULT = RedisClientConfigurationInterface::CONNECTION_TYPE_NET;
-    public const HOST_DEFAULT = 'localhost';
-    public const PORT_DEFAULT = 6379;
-    public const CONNECTION_TIMEOUT_DEFAULT = 0.0;
-    public const READ_TIMEOUT_DEFAULT = 0.0;
+    public const CONNECTION_TYPE_DEFAULT           = RedisClientConfigurationInterface::CONNECTION_TYPE_NET;
+    public const HOST_DEFAULT                      = 'localhost';
+    public const PORT_DEFAULT                      = 6379;
+    public const CONNECTION_TIMEOUT_DEFAULT        = 0.0;
+    public const READ_TIMEOUT_DEFAULT              = 0.0;
     public const CONNECTION_RETRY_INTERNAL_DEFAULT = 0;
-    public const CONNECTION_REUSE_DEFAULT = false;
+    public const CONNECTION_REUSE_DEFAULT          = false;
 
-    protected const CFG_CONNECTION_TYPE = 'REDIS_%s_CONNECTION_TYPE';
-    protected const CFG_CONNECTION_REUSE = 'REDIS_%s_CONNECTION_REUSE';
-    protected const CFG_CONNECTION_HOST = 'REDIS_%s_HOST';
-    protected const CFG_CONNECTION_PORT = 'REDIS_%s_PORT';
-    protected const CFG_CONNECTION_TIMEOUT = 'REDIS_%s_TIMEOUT';
+    protected const CFG_CONNECTION_TYPE           = 'REDIS_%s_CONNECTION_TYPE';
+    protected const CFG_CONNECTION_REUSE          = 'REDIS_%s_CONNECTION_REUSE';
+    protected const CFG_CONNECTION_HOST           = 'REDIS_%s_HOST';
+    protected const CFG_CONNECTION_PORT           = 'REDIS_%s_PORT';
+    protected const CFG_CONNECTION_TIMEOUT        = 'REDIS_%s_TIMEOUT';
     protected const CFG_CONNECTION_RETRY_INTERVAL = 'REDIS_%s_RETRY_INTERVAL';
-    protected const CFG_READ_TIMEOUT = 'REDIS_%s_READ_TIMEOUT';
+    protected const CFG_READ_TIMEOUT              = 'REDIS_%s_READ_TIMEOUT';
 
     /**
      * {@inheritDoc}
