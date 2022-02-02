@@ -46,7 +46,7 @@ class RedisPlugin extends AbstractPlugin
     protected function createRedisBuilderFactory(): RedisBuilderFactoryInterface
     {
         return new RedisBuilderFactory(
-            $this->configuration(),
+            $this->configuration,
             $this->createRedisFactory()
         );
     }
@@ -57,13 +57,5 @@ class RedisPlugin extends AbstractPlugin
     protected function createRedisFactory(): RedisFactoryInterface
     {
         return new RedisFactory();
-    }
-
-    /**
-     * @return RedisPluginConfiguration
-     */
-    protected function configuration(): RedisPluginConfigurationInterface
-    {
-        return parent::configuration();
     }
 }

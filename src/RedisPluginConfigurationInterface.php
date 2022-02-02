@@ -17,5 +17,4 @@ interface RedisPluginConfigurationInterface extends PluginConfigurationInterface
      * @return RedisClientConfigurationInterface
      */
     public function getClientConfiguration(string $clientName): RedisClientConfigurationInterface;
-
 }

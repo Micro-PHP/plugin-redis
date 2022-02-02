@@ -30,7 +30,10 @@ class RedisPluginConfiguration extends PluginConfiguration implements RedisPlugi
     public function getClientConfiguration(string $clientName): RedisClientConfigurationInterface
     {
         if(!in_array($clientName, $this->getClientList(), true)) {
-            throw new \InvalidArgumentException('Redis client is not defined in the environment file. Please, append connection id to "%s"', self::CFG_CLIENT_LIST);
+            throw new \InvalidArgumentException(
+                'Redis client is not defined in the environment file. Please, append connection id to "%s"',
+                self::CFG_CLIENT_LIST
+            );
         }
 
         return new RedisClientConfiguration($this->configuration, $clientName);

@@ -14,4 +14,3 @@ interface AuthorizationConfigurationInterface
      */
     public function password(): ?string;
 }
-

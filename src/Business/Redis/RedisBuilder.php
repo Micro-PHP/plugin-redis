@@ -14,9 +14,11 @@ class RedisBuilder implements RedisBuilderInterface
      * @param RedisFactoryInterface $redisFactory
      */
     public function __construct(
-        private RedisPluginConfiguration $pluginConfiguration,
-        private RedisFactoryInterface $redisFactory
-    ) {}
+    private RedisPluginConfiguration $pluginConfiguration,
+    private RedisFactoryInterface $redisFactory
+    )
+    {
+    }
 
     /**
      * @param string $redisAlias
@@ -26,7 +28,7 @@ class RedisBuilder implements RedisBuilderInterface
     public function create(string $redisAlias): Redis
     {
         $clientConfiguration = $this->pluginConfiguration->getClientConfiguration($redisAlias);
-        $redis = $this->redisFactory->create();
+        $redis               = $this->redisFactory->create();
 
         $this->initialize($redis, $clientConfiguration);
 

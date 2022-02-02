@@ -8,12 +8,12 @@ class ClientOptionsConfiguration extends PluginRoutingKeyConfiguration implement
 {
 
     protected const CFG_SERIALIZER = 'REDIS_%s_OPT_SERIALIZER';
-    protected const CFG_PREFIX = 'REDIS_%s_OPT_PREFIX';
-    protected const CFG_SCAN = 'REDIS_%s_OPT_SCAN';
+    protected const CFG_PREFIX     = 'REDIS_%s_OPT_PREFIX';
+    protected const CFG_SCAN       = 'REDIS_%s_OPT_SCAN';
 
-    public const PREFIX_DEFAULT = '';
+    public const PREFIX_DEFAULT     = '';
     public const SERIALIZER_DEFAULT = ClientOptionsConfigurationInterface::SERIALIZER_NONE;
-    public const SCAN_DEFAULT = '';
+    public const SCAN_DEFAULT       = '';
 
     /**
      * {@inheritDoc}
