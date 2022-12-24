@@ -3,7 +3,9 @@
 namespace Micro\Plugin\Redis;
 
 use Micro\Component\DependencyInjection\Container;
-use Micro\Framework\Kernel\Plugin\AbstractPlugin;
+use Micro\Framework\Kernel\Plugin\ConfigurableInterface;
+use Micro\Framework\Kernel\Plugin\DependencyProviderInterface;
+use Micro\Framework\Kernel\Plugin\PluginConfigurationTrait;
 use Micro\Plugin\Redis\Business\Redis\RedisBuilderFactory;
 use Micro\Plugin\Redis\Business\Redis\RedisBuilderFactoryInterface;
 use Micro\Plugin\Redis\Business\Redis\RedisFactory;
@@ -14,8 +16,10 @@ use Micro\Plugin\Redis\Business\Redis\RedisManagerInterface;
 /**
  * @method RedisPluginConfigurationInterface configuration()
  */
-class RedisPlugin extends AbstractPlugin
+class RedisPlugin implements DependencyProviderInterface, ConfigurableInterface
 {
+    use PluginConfigurationTrait;
+
     /**
      * {@inheritDoc}
      */

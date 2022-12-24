@@ -2,13 +2,19 @@
 
 namespace Micro\Plugin\Redis\Business\Redis;
 
+
+use Micro\Plugin\Redis\Redis\Decorator\BaseRedisDecorator;
+use Micro\Plugin\Redis\Redis\RedisInterface;
+
 class RedisFactory implements RedisFactoryInterface
 {
     /**
-     * @return \Redis
+     * {@inheritDoc}
      */
-    public function create(): \Redis
+    public function create(): RedisInterface
     {
-        return new \Redis();
+        $redis = new \Redis();
+
+        return new BaseRedisDecorator($redis);
     }
 }

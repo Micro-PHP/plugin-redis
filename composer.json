@@ -3,7 +3,7 @@
     "description": "Micro Framework: Redis component",
     "type": "library",
     "license": "MIT",
-    "version": "0.1",
+    "version": "1.0",
     "autoload": {
         "psr-4": {
             "Micro\\Plugin\\Redis\\": "src/"
@@ -16,6 +16,6 @@
         }
     ],
     "require": {
-        "php": ">=8.0"
+        "micro/kernel": "^1"
     }
 }
