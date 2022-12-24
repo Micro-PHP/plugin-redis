@@ -2,13 +2,13 @@
 
 namespace Micro\Plugin\Redis;
 
-use \Redis;
+use Micro\Plugin\Redis\Redis\RedisInterface;
 
 interface RedisFacadeInterface
 {
     /**
      * @param string $clientName
-     * @return \Redis
+     * @return RedisInterface
      */
-    public function getClient(string $clientName = RedisPluginConfiguration::CLIENT_DEFAULT): Redis;
+    public function getClient(string $clientName = RedisPluginConfiguration::CLIENT_DEFAULT): RedisInterface;
 }

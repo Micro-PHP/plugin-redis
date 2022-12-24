@@ -2,11 +2,13 @@
 
 namespace Micro\Plugin\Redis\Business\Redis;
 
+use Micro\Plugin\Redis\Redis\RedisInterface;
+
 interface RedisBuilderInterface
 {
     /**
      * @param string $redisAlias
-     * @return \Redis
+     * @return RedisInterface
      */
-    public function create(string $redisAlias): \Redis;
+    public function create(string $redisAlias): RedisInterface;
 }

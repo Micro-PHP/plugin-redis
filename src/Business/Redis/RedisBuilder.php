@@ -4,9 +4,13 @@ namespace Micro\Plugin\Redis\Business\Redis;
 
 use Micro\Plugin\Redis\Configuration\ClientOptionsConfigurationInterface;
 use Micro\Plugin\Redis\Configuration\RedisClientConfigurationInterface;
+use Micro\Plugin\Redis\Redis\RedisInterface;
 use Micro\Plugin\Redis\RedisPluginConfigurationInterface;
-use \Redis;
+use Redis;
 
+/**
+ * @author Stanislau Komar <head.trackingsoft@gmail.com>
+ */
 class RedisBuilder implements RedisBuilderInterface
 {
     /**
@@ -14,18 +18,16 @@ class RedisBuilder implements RedisBuilderInterface
      * @param RedisFactoryInterface $redisFactory
      */
     public function __construct(
-    private RedisPluginConfigurationInterface $pluginConfiguration,
-    private RedisFactoryInterface $redisFactory
+        private readonly RedisPluginConfigurationInterface $pluginConfiguration,
+        private readonly RedisFactoryInterface $redisFactory
     )
     {
     }
 
     /**
-     * @param string $redisAlias
-     *
-     * @return Redis
+     * {@inheritDoc}
      */
-    public function create(string $redisAlias): Redis
+    public function create(string $redisAlias): RedisInterface
     {
         $clientConfiguration = $this->pluginConfiguration->getClientConfiguration($redisAlias);
         $redis               = $this->redisFactory->create();
@@ -36,11 +38,12 @@ class RedisBuilder implements RedisBuilderInterface
     }
 
     /**
-     * @param Redis $redis
+     * @param RedisInterface $redis
      * @param RedisClientConfigurationInterface $configuration
+     *
      * @return void
      */
-    protected function initialize(Redis $redis, RedisClientConfigurationInterface $configuration): void
+    protected function initialize(RedisInterface $redis, RedisClientConfigurationInterface $configuration): void
     {
         $connectionMethod = $this->getConnectionMethod($configuration);
 
@@ -63,11 +66,12 @@ class RedisBuilder implements RedisBuilderInterface
     }
 
     /**
-     * @param Redis $redis
+     * @param RedisInterface $redis
      * @param ClientOptionsConfigurationInterface $configuration
+     *
      * @return void
      */
-    protected function setOptions(Redis $redis, ClientOptionsConfigurationInterface $configuration): void
+    protected function setOptions(RedisInterface $redis, ClientOptionsConfigurationInterface $configuration): void
     {
         $redis->setOption(Redis::OPT_SERIALIZER, $this->getRedisOptionValue($configuration->serializer()));
         $redis->setOption(Redis::OPT_PREFIX, $configuration->prefix());
@@ -75,6 +79,7 @@ class RedisBuilder implements RedisBuilderInterface
 
     /**
      * @param string $redisOption
+     *
      * @return int
      */
     protected function getRedisOptionValue(string $redisOption): int
@@ -84,6 +89,7 @@ class RedisBuilder implements RedisBuilderInterface
 
     /**
      * @param RedisClientConfigurationInterface $configuration
+     *
      * @return string
      */
     protected function getConnectionMethod(RedisClientConfigurationInterface $configuration): string
@@ -93,6 +99,7 @@ class RedisBuilder implements RedisBuilderInterface
 
     /**
      * @param RedisClientConfigurationInterface $configuration
+     *
      * @return string|null
      */
     protected function getPersistentId(RedisClientConfigurationInterface $configuration): ?string
