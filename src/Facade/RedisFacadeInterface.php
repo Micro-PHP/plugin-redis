@@ -11,14 +11,10 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Redis\Business\Redis;
+namespace Micro\Plugin\Redis\Facade;
 
-use Micro\Plugin\Redis\RedisPluginConfiguration;
+use Micro\Plugin\Redis\Business\Redis\RedisManagerInterface;
 
-interface RedisManagerInterface
+interface RedisFacadeInterface extends RedisManagerInterface, \Micro\Plugin\Redis\RedisFacadeInterface
 {
-    /**
-     * @throws \RedisException
-     */
-    public function getClient(string $clientName = RedisPluginConfiguration::CLIENT_DEFAULT): \Redis;
 }

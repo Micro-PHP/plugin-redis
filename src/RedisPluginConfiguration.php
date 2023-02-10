@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ *  This file is part of the Micro framework package.
+ *
+ *  (c) Stanislau Komar <kost@micro-php.net>
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ */
+
 namespace Micro\Plugin\Redis;
 
 use Micro\Framework\Kernel\Configuration\PluginConfiguration;
@@ -8,36 +19,10 @@ use Micro\Plugin\Redis\Configuration\RedisClientConfigurationInterface;
 
 class RedisPluginConfiguration extends PluginConfiguration implements RedisPluginConfigurationInterface
 {
-
-    protected const CFG_CLIENT_LIST = 'REDIS_CLIENTS';
-
     public const CLIENT_DEFAULT = 'default';
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getClientList(): array
-    {
-        return $this->explodeStringToArray(
-            $this->configuration->get(self::CFG_CLIENT_LIST, self::CLIENT_DEFAULT)
-        );
-    }
-
-    /**
-     * @param string $clientName
-     * @return RedisClientConfigurationInterface
-     */
     public function getClientConfiguration(string $clientName): RedisClientConfigurationInterface
     {
-        if(!in_array($clientName, $this->getClientList(), true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    'Redis client is not defined in the environment file. Please, append connection id to "%s"',
-                    self::CFG_CLIENT_LIST
-                )
-            );
-        }
-
         return new RedisClientConfiguration($this->configuration, $clientName);
     }
 }
