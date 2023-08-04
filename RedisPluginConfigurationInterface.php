@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Micro\Plugin\Redis;
 
-use Micro\Framework\Kernel\Configuration\PluginConfigurationInterface;
+use Micro\Framework\BootConfiguration\Configuration\PluginConfigurationInterface;
 use Micro\Plugin\Redis\Configuration\RedisClientConfigurationInterface;
 
 interface RedisPluginConfigurationInterface extends PluginConfigurationInterface

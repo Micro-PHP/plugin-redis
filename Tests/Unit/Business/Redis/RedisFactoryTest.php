@@ -11,9 +11,9 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Cache\Test\Unit\Business\Redis;
+namespace Micro\Plugin\Cache\Tests\Unit\Business\Redis;
 
-use Micro\Framework\Kernel\Configuration\DefaultApplicationConfiguration;
+use Micro\Framework\BootConfiguration\Configuration\DefaultApplicationConfiguration;
 use Micro\Plugin\Redis\Business\Redis\RedisFactory;
 use Micro\Plugin\Redis\Configuration\RedisClientConfiguration;
 use PHPUnit\Framework\TestCase;

@@ -11,10 +11,10 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Cache\Test\Unit;
+namespace Micro\Plugin\Cache\Tests\Unit;
 
-use Micro\Framework\Kernel\Configuration\DefaultApplicationConfiguration;
-use Micro\Framework\Kernel\Configuration\Exception\InvalidConfigurationException;
+use Micro\Framework\BootConfiguration\Configuration\DefaultApplicationConfiguration;
+use Micro\Framework\BootConfiguration\Configuration\Exception\InvalidConfigurationException;
 use Micro\Plugin\Redis\RedisPluginConfiguration;
 use PHPUnit\Framework\TestCase;
 

@@ -11,7 +11,7 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Cache\Test\Unit\Business\Redis;
+namespace Micro\Plugin\Cache\Tests\Unit\Business\Redis;
 
 use Micro\Plugin\Redis\Business\Redis\RedisFactoryInterface;
 use Micro\Plugin\Redis\Business\Redis\RedisManager;

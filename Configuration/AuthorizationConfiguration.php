@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Micro\Plugin\Redis\Configuration;
 
-use Micro\Framework\Kernel\Configuration\PluginRoutingKeyConfiguration;
+use Micro\Framework\BootConfiguration\Configuration\PluginRoutingKeyConfiguration;
 
 class AuthorizationConfiguration extends PluginRoutingKeyConfiguration implements AuthorizationConfigurationInterface
 {

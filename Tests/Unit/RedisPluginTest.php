@@ -11,9 +11,9 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Cache\Test\Unit;
+namespace Micro\Plugin\Cache\Tests\Unit;
 
-use Micro\Kernel\App\AppKernel;
+use Micro\Framework\KernelApp\AppKernel;
 use Micro\Plugin\Redis\Facade\RedisFacadeInterface;
 use Micro\Plugin\Redis\RedisPlugin;
 use PHPUnit\Framework\TestCase;
