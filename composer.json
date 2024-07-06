@@ -13,9 +13,7 @@
         "ext-redis": "*",
         "micro/kernel-app": "^2.0"
     },
-    "require-dev": {
-        "ergebnis/composer-normalize": "^2.34"
-    },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Micro\\Plugin\\Redis\\": "/"
@@ -25,10 +23,6 @@
         ]
     },
     "config": {
-        "allow-plugins": {
-            "ergebnis/composer-normalize": true
-        },
         "sort-packages": true
-    },
-    "minimum-stability": "dev"
+    }
 }

@@ -22,6 +22,7 @@ use Micro\Plugin\Redis\Business\Redis\RedisFactoryInterface;
 use Micro\Plugin\Redis\Business\Redis\RedisManager;
 use Micro\Plugin\Redis\Business\Redis\RedisManagerInterface;
 use Micro\Plugin\Redis\Facade\RedisFacade;
+use Micro\Plugin\Redis\Facade\RedisFacadeInterface;
 
 /**
  * @method RedisPluginConfigurationInterface configuration()
@@ -32,12 +33,12 @@ class RedisPlugin implements DependencyProviderInterface, ConfigurableInterface
 
     public function provideDependencies(Container $container): void
     {
-        $container->register(\Micro\Plugin\Redis\Facade\RedisFacadeInterface::class, function (): Facade\RedisFacadeInterface {
+        $container->register(RedisFacadeInterface::class, function (): Facade\RedisFacadeInterface {
             return $this->createRedisFacade();
         });
 
-        $container->register(RedisFacadeInterface::class, function (Container $container) { // Deprecation support
-            return $container->get(\Micro\Plugin\Redis\Facade\RedisFacadeInterface::class);
+        $container->register(RedisFacadeInterface::class, function (Container $container) {
+            return $container->get(RedisFacadeInterface::class);
         });
     }
 

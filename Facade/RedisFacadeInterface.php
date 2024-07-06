@@ -14,7 +14,14 @@ declare(strict_types=1);
 namespace Micro\Plugin\Redis\Facade;
 
 use Micro\Plugin\Redis\Business\Redis\RedisManagerInterface;
+use Micro\Plugin\Redis\RedisPluginConfiguration;
 
-interface RedisFacadeInterface extends RedisManagerInterface, \Micro\Plugin\Redis\RedisFacadeInterface
+interface RedisFacadeInterface extends RedisManagerInterface
 {
+    /**
+     * @param string $clientName
+     *
+     * @return \Redis
+     */
+    public function getClient(string $clientName = RedisPluginConfiguration::CLIENT_DEFAULT): \Redis;
 }

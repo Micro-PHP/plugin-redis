@@ -16,9 +16,6 @@ namespace Micro\Plugin\Redis\Facade;
 use Micro\Plugin\Redis\Business\Redis\RedisManagerInterface;
 use Micro\Plugin\Redis\RedisPluginConfiguration;
 
-/**
- * @psalm-suppress DeprecatedInterface
- */
 readonly class RedisFacade implements RedisFacadeInterface
 {
     public function __construct(private RedisManagerInterface $redisManager)
