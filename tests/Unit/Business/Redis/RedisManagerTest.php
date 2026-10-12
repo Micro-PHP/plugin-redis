@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 
 class RedisManagerTest extends TestCase
 {
-    public function testGetClient()
+    public function testGetClient(): void
     {
         $factory = $this->createMock(RedisFactoryInterface::class);
         $cfg = $this->createMock(RedisPluginConfigurationInterface::class);

@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 
 class RedisFacadeTest extends TestCase
 {
-    public function testGetClient()
+    public function testGetClient(): void
     {
         $manager = $this->createMock(RedisManagerInterface::class);
         $manager->expects($this->once())->method('getClient')->with('test');

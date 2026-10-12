@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 
 class RedisPluginTest extends TestCase
 {
-    public function testPlugin()
+    public function testPlugin(): void
     {
         $kernel = new AppKernel(
             [],
@@ -31,12 +31,13 @@ class RedisPluginTest extends TestCase
 
         $kernel->run();
 
-        $this->expectException(\RedisException::class);
-        $this->expectExceptionMessage('Connection refused');
         $facade = $kernel->container()->get(RedisFacadeInterface::class);
         $facadeDeprecated = $kernel->container()->get(\Micro\Plugin\Redis\RedisFacadeInterface::class);
 
-        $this->assertEquals($facade, $facadeDeprecated);
+        $this->assertSame($facade, $facadeDeprecated);
+
+        $this->expectException(\RedisException::class);
+        $this->expectExceptionMessage('Connection refused');
 
         $kernel->container()->get(RedisFacadeInterface::class)->getClient();
     }

@@ -25,7 +25,7 @@ class RedisManager implements RedisManagerInterface
 
     public function __construct(
         private readonly RedisFactoryInterface $redisFactory,
-        private readonly RedisPluginConfigurationInterface $redisPluginConfiguration
+        private readonly RedisPluginConfigurationInterface $redisPluginConfiguration,
     ) {
         $this->redisCollection = [];
     }

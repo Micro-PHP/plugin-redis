@@ -57,7 +57,7 @@ class RedisClientConfiguration extends PluginRoutingKeyConfiguration implements 
     {
         $connectionType = $this->get(self::CFG_CONNECTION_TYPE, self::CONNECTION_TYPE_DEFAULT);
         if (!\in_array($connectionType, $this->getAvailableConnectionTypes(), true)) {
-            throw new InvalidConfigurationException(sprintf('Configuration key "%s" has invalid value. Redis: connection type %s is not available', $this->cfg(self::CFG_CONNECTION_TYPE), $connectionType));
+            throw new InvalidConfigurationException(\sprintf('Configuration key "%s" has invalid value. Redis: connection type %s is not available', $this->cfg(self::CFG_CONNECTION_TYPE), $connectionType));
         }
 
         return $connectionType;
