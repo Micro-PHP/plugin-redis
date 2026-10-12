@@ -32,12 +32,12 @@ class RedisPlugin implements DependencyProviderInterface, ConfigurableInterface
 
     public function provideDependencies(Container $container): void
     {
-        $container->register(\Micro\Plugin\Redis\Facade\RedisFacadeInterface::class, function (): Facade\RedisFacadeInterface {
+        $container->register(Facade\RedisFacadeInterface::class, function (): Facade\RedisFacadeInterface {
             return $this->createRedisFacade();
         });
 
-        $container->register(RedisFacadeInterface::class, function (Container $container) { // Deprecation support
-            return $container->get(\Micro\Plugin\Redis\Facade\RedisFacadeInterface::class);
+        $container->register(RedisFacadeInterface::class, static function () use ($container): Facade\RedisFacadeInterface { // Deprecation support
+            return $container->get(Facade\RedisFacadeInterface::class);
         });
     }
 
