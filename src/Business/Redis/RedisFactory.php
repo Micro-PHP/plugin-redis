@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Micro\Plugin\Redis\Business\Redis;
 
+use Micro\Plugin\Redis\Configuration\AuthorizationConfiguration;
+use Micro\Plugin\Redis\Configuration\AuthorizationConfigurationInterface;
 use Micro\Plugin\Redis\Configuration\ClientOptionsConfigurationInterface;
 use Micro\Plugin\Redis\Configuration\RedisClientConfigurationInterface;
 
@@ -35,6 +37,16 @@ class RedisFactory implements RedisFactoryInterface
      */
     protected function initialize(\Redis $redis, RedisClientConfigurationInterface $configuration): void
     {
+        $this->connect($redis, $configuration);
+        $this->authenticate($redis, $configuration->authorizationConfiguration());
+        $this->setOptions($redis, $configuration->clientOptionsConfiguration());
+    }
+
+    /**
+     * @throws \RedisException
+     */
+    protected function connect(\Redis $redis, RedisClientConfigurationInterface $configuration): void
+    {
         $connectionMethod = $this->getConnectionMethod($configuration);
 
         if (RedisClientConfigurationInterface::CONNECTION_TYPE_UNIX === $configuration->connectionType()) {
@@ -52,8 +64,27 @@ class RedisFactory implements RedisFactoryInterface
             $configuration->retryInterval(),
             $configuration->readTimeout(),
         );
+    }
 
-        $this->setOptions($redis, $configuration->clientOptionsConfiguration());
+    /**
+     * @throws \RedisException
+     */
+    protected function authenticate(\Redis $redis, AuthorizationConfigurationInterface $configuration): void
+    {
+        $password = $configuration->password();
+        if (null === $password) {
+            return;
+        }
+
+        $username = $configuration->username();
+        // Password-only AUTH uses Redis's default user and also supports Redis < 6.
+        $credentials = null === $username || '' === $username || AuthorizationConfiguration::USERNAME_DEFAULT === $username
+            ? $password
+            : [$username, $password];
+
+        if (!$redis->auth($credentials)) {
+            throw new \RedisException('Redis authentication failed.');
+        }
     }
 
     /**
