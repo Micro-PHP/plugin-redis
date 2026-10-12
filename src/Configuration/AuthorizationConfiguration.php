@@ -17,6 +17,8 @@ use Micro\Framework\Kernel\Configuration\PluginRoutingKeyConfiguration;
 
 class AuthorizationConfiguration extends PluginRoutingKeyConfiguration implements AuthorizationConfigurationInterface
 {
+    public const USERNAME_DEFAULT = 'default';
+
     protected const CFG_USERNAME = 'REDIS_%s_AUTH_USERNAME';
     protected const CFG_PASSWORD = 'REDIS_%s_AUTH_PASSWORD';
 
@@ -25,7 +27,7 @@ class AuthorizationConfiguration extends PluginRoutingKeyConfiguration implement
      */
     public function username(): ?string
     {
-        return $this->get(self::CFG_USERNAME);
+        return $this->get(self::CFG_USERNAME, self::USERNAME_DEFAULT);
     }
 
     /**

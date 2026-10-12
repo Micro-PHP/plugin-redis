@@ -85,7 +85,7 @@ class RedisPluginConfigurationTest extends TestCase
         $this->assertTrue($ssl->verify());
     }
 
-    public function testDefaultConfiguration()
+    public function testDefaultConfiguration(): void
     {
         $clientCfg = $this->cfg->getClientConfiguration('default');
 
@@ -105,10 +105,22 @@ class RedisPluginConfigurationTest extends TestCase
 
         $auth = $clientCfg->authorizationConfiguration();
         $this->assertNull($auth->password());
-        $this->assertNull($auth->username());
+        $this->assertSame('default', $auth->username());
 
         $ssl = $clientCfg->sslConfiguration();
         $this->assertFalse($ssl->enabled());
         $this->assertFalse($ssl->verify());
+    }
+
+    public function testPasswordOnlyAuthorizationUsesDefaultUser(): void
+    {
+        $configuration = new RedisPluginConfiguration(new DefaultApplicationConfiguration([
+            'REDIS_TEST_AUTH_PASSWORD' => 'password',
+        ]));
+
+        $auth = $configuration->getClientConfiguration('test')->authorizationConfiguration();
+
+        $this->assertSame('default', $auth->username());
+        $this->assertSame('password', $auth->password());
     }
 }
